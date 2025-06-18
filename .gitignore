@@ -1,0 +1,8 @@
+Fullstack/Frontend/node_modules
+Fullstack/Frontend/.env
+
+
+Fullstack/Backend/node_modules
+Fullstack/Backend/.env
+
+**/*.log
