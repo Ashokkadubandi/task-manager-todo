@@ -1,0 +1,236 @@
+.home-tasks-container{
+    padding: 2rem;
+    position: relative;
+}
+
+.delete-alert-card{
+    background-color: rgb(58, 54, 54);
+    text-align: center;
+    padding: 1rem 1.5rem; 
+    color: rgb(231, 221, 221);
+    border-radius: 8px;
+    position: fixed;
+    z-index: 999;
+    left: 38%;
+    top: 200px;
+    font-size: 1.2rem;
+}
+.delete-alert-card span{
+    display: inline-block;
+    background-color: white;
+    padding: 0.3rem 1rem;
+    color: black;
+    border-radius: 5px;
+    margin: 0.8rem;
+    cursor: pointer;
+}
+
+.home-tasks{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-tasks{
+    background-color: rgb(38, 38, 255);
+    color: white;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    height: 40px;
+    width: 100px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.ul-task-list{
+    list-style-type: none;
+    position: relative;
+    top: 20px;
+    padding: 1rem; 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.task-list{
+    padding: 1rem;
+    border: 1px solid rgb(211, 205, 205);
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 12px;
+    padding-right: 12px;
+    border-radius: 8px;
+    position: relative;
+}
+.task-title{
+    color: #323f4b;
+    font-size: 2rem;
+    width: 50%;
+}
+
+.status{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+}
+.status p{
+    background-color: rgb(238, 238, 192);
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 8px;
+
+}
+.edit-card{
+    display: flex;
+    align-items: center;
+    width: 25%;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+.delete-card{
+    width: 25%;
+}
+.delete{
+    cursor: pointer;
+}
+.links{
+    color: black;
+    text-decoration: none;
+}
+
+.mobile-menu-bar{
+    display: none;
+}
+
+@media(max-width:636px){
+    .task-title{
+        font-size: 1rem;
+        width: 100%;
+    }
+    .status{
+        display: none;
+    }   
+    .edit-card{
+        display: none;
+    }
+    .delete-card{
+        display: none;
+    }
+    .mobile-menu-bar{
+        display: block;
+    }
+    .mobile-options-view{
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        right: 25px;
+        top: -20px;
+        background-color: rgb(250, 242, 242);
+        padding: 0.5rem 2rem;
+        border-radius: 8px;
+    }
+    .mobile-options-view span{
+        padding-bottom: 0.2rem;
+    }
+    .delete-alert-card{
+        left: 20%;
+    }
+}
+
+.edit-task-container{
+    padding: 1rem;
+    position: relative;
+}
+.error-message{
+    background-color: rgb(247, 252, 255);
+    position: absolute;
+    z-index: 999;
+    left: 40%;
+    top: -250px;
+    height: 100px;
+    width: 300px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 250ms;
+    box-shadow: 5px 5px 30px rgb(250, 233, 233);
+}
+.show-error-message{
+    top: 100px;
+}
+.edit-task-header{
+    font-size:2.5rem;
+    color: #4b5e70;
+}
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.loader{
+    position: absolute;
+    opacity: 1;
+    background-color: rgb(255, 255, 255);
+}
+.hide-form{
+    opacity: 0.2;
+    background-color: rgb(255, 255, 255);
+}
+.form{
+    border: 1px solid rgb(250, 243, 243);
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 1px 1px 10px rgb(211, 208, 208);
+}
+.form label{
+    font-size: 1.2rem;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.form input{
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgb(231, 229, 229);
+    font-size: 1rem;
+    outline: none;
+}
+.form textarea{
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgb(231,229,229);
+    outline: none;
+}
+.form select{
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid rgb(231,229,229);
+    font-size: 1rem;
+}
+.update-task{
+    background-color: rgb(54, 54, 255);
+    color: white;
+    height: 30px;
+    width: 100px;
+    border: none;
+    border-radius: 8px;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+@media(max-width:636px){
+    .form-container{
+        padding-top: 50px;
+    }
+    .form{
+        width: 100%;
+    }
+}
