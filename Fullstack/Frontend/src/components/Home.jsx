@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { MdOutlineEditNote } from "react-icons/md";
 import { MdDeleteOutline } from "react-icons/md";
 import { CiMenuKebab } from "react-icons/ci";
@@ -8,21 +8,25 @@ import { BeatLoader } from 'react-spinners';
 const Home = () => {
   const [taskList,setTaskList] = useState([])
   const [apiState,setApiState] = useState(false)
+  const navigate = useNavigate()
   const [deleteAction,setDeleteAction] = useState({state:false,id:'',apiState:false})
   const [mobileBar,setMobileBar] = useState('')
   
   const getAllTasks = async () => {
-    console.log('called')
     setApiState(true)
     try {
       const response = await fetch('https://task-manager-todo.onrender.com/api/tasks')
       const data = await response.json()
-      console.log(data)
       setTaskList(data.tasks)
       setApiState(false)
     } catch (error) {
       alert(error)
     }
+  }
+
+  const stopMobilePropEvent = (id,event) => {
+    event.stopPropagation()
+    setMobileBar(id)
   }
 
   const deleteTask = async () => {
@@ -43,7 +47,11 @@ const Home = () => {
     }
   }
 
-  const AlertdeleteCard = id => {
+
+
+  const AlertdeleteCard = (id,event) => {
+    event.stopPropagation()
+
     setDeleteAction(prev => {return {
       ...prev,
       state:true,
@@ -71,6 +79,17 @@ const Home = () => {
     deleteTask()
   }
 
+  const navigateToView = (data) => {
+    navigate('/todo-view',{
+      state:data
+    })
+  }
+
+  const navigateToEdit = (id,event) => {
+    event.stopPropagation()
+    navigate(`/edit/${id}`)
+  }
+
 
   useEffect(() => {
     getAllTasks()
@@ -81,26 +100,26 @@ const Home = () => {
       <ul className='ul-task-list'>
         {taskList.map(eachTask => {
           const {title,status,id} = eachTask
-          return <li className='task-list' key={eachTask.id}>
+          return <li className='task-list' key={id} onClick={ () => navigateToView(eachTask)}>
             <h1 className='task-title'>{title}</h1>
-            <div className='mobile-menu-bar' onClick={() => setMobileBar(id)}>
+            <div className='mobile-menu-bar' onClick={(event) => stopMobilePropEvent(id,event)}>
               <CiMenuKebab/>
             {mobileBar === id && 
               <div className='mobile-options-view'>
-                <Link className='links' to={`/edit/${id}`}><span>Edit</span></Link>
-                <span onClick={() => AlertdeleteCard(id)}>Delete</span>
+                <span onClick={(event) => navigateToEdit(id,event)}>Edit</span>
+                <span onClick={(event) =>  AlertdeleteCard(id,event)}>Delete</span>
               </div>
             }
             </div>
             <div className='status'>
               <p>{status}</p>
             </div>
-            <Link className='edit-card' to={`/edit/${id}`}>
+            <div className='edit-card' onClick={(event) => {navigateToEdit(id,event)}}>
                 <span>Edit</span>
                 <MdOutlineEditNote fontSize={'30px'}/>
-            </Link>
+            </div>
             <div className='delete-card'>
-              <MdDeleteOutline onClick={() => AlertdeleteCard(id)} className='delete' fontSize={'25px'}/>
+              <MdDeleteOutline onClick={(event) => AlertdeleteCard(id,event)} className='delete' fontSize={'25px'}/>
             </div>
           </li>
         })}

@@ -56,6 +56,7 @@
 .task-list{
     padding: 1rem;
     border: 1px solid rgb(211, 205, 205);
+    cursor: pointer;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
     display: flex;
@@ -90,6 +91,7 @@
     width: 25%;
     text-decoration: none;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 .delete-card{
     width: 25%;
@@ -127,14 +129,17 @@
         display: flex;
         flex-direction: column;
         position: absolute;
-        right: 25px;
-        top: -20px;
-        background-color: rgb(250, 242, 242);
-        padding: 0.5rem 2rem;
-        border-radius: 8px;
+        right: 28px;
+        top: 20px;
+        z-index: 999;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(175, 175, 175);
+        padding: 0.1rem 0.5rem;
+        border-radius: 15px;
     }
     .mobile-options-view span{
-        padding-bottom: 0.2rem;
+        padding: 0.4rem;
+        line-height: 1.5;
     }
     .delete-alert-card{
         left: 20%;
@@ -232,5 +237,48 @@
     }
     .form{
         width: 100%;
+    }
+}
+.todo-view-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.todo-view-card{
+    background-color: rgb(250, 243, 243);
+    width: 50%;
+    padding: 1rem 2rem;
+}
+.todo-view-card h3{
+    font-size: 3rem;
+    padding: 0.5rem;
+}
+.todo-view-card p{
+    font-size: 1rem;
+    padding: 0.5rem;
+    line-height: 2;
+}
+.status-bg{
+    background-color: #323f4b;
+    color: white;
+    border-radius: 8px;
+    max-width: 200px;
+    text-align: center;
+    margin: 0.5rem;
+}
+@media(max-width:636px){
+    .todo-view-card{
+        width: 90%;
+        border-radius: 20px;
+    }
+    .todo-view-card h3{
+        font-size: 2rem;
+    }
+    .todo-view-card p{
+        font-size: 1rem;
+    }
+    .status-bg{
+        font-size: 1rem;
     }
 }

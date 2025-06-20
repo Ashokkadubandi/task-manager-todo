@@ -4,6 +4,7 @@ import Add from './components/Add.jsx'
 import Edit from './components/Edit.jsx'
 import './App.css'
 import './style.css'
+import TodoView from './components/TodoView.jsx'
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,9 @@ const router = createBrowserRouter([
   },{
     path:'/edit/:id',
     element:<Edit/>
+  },{
+    path:'/todo-view',
+    element:<TodoView/>
   }
 ])
 
