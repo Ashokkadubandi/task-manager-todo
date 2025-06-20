@@ -15,12 +15,6 @@ A full-stack *Todo Task Manager* application with the ability to create, edit, a
 
 ---
 
-## 📁 Folder Structure
-
-TodoTask/ ├── backend/ │   ├── src/ │   │  │   ├── entities/ │   │   ├── routes/ │   │   ├── middlewares/ │   │   ├── database.ts │   │   └── index.ts │   ├── tsconfig.json │   ├── ormconfig.ts │   └── package.json ├── frontend/ (optional) │   └── ...
-
----
-
 ## 🧰 Tech Stack
 
 *Backend*:
